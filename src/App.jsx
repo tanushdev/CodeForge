@@ -13,6 +13,7 @@ import ResourcesPage from './pages/Resources';
 import Review from './pages/Review';
 import SystemDesign from './pages/SystemDesign';
 import Playground from './pages/Playground';
+import Learn from './pages/Learn';
 
 function ProtectedRoute({ children }) {
   const { user, loading } = useAuth();
@@ -59,6 +60,7 @@ export default function App() {
             <Route path="/review" element={<ProtectedRoute><Review /></ProtectedRoute>} />
             <Route path="/system-design" element={<ProtectedRoute><SystemDesign /></ProtectedRoute>} />
             <Route path="/playground" element={<ProtectedRoute><Playground /></ProtectedRoute>} />
+            <Route path="/learn" element={<ProtectedRoute><Learn /></ProtectedRoute>} />
             <Route path="*" element={<Navigate to="/welcome" replace />} />
           </Routes>
         </AppLayout>

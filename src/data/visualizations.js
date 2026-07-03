@@ -104,6 +104,92 @@ function slidingWindowSteps(arr, k) {
   return steps;
 }
 
+function stackSteps(arr) {
+  const steps = [];
+  const stack = [];
+  steps.push({ array: [...arr], stack: [], pointers: {}, highlights: [], codeLine: 0, log: `Push each element, pop when we see a smaller value.`, done: false });
+  for (let i = 0; i < arr.length; i++) {
+    steps.push({ array: [...arr], stack: [...stack], pointers: { ptr: i }, highlights: [i], codeLine: 1, log: `Processing ${arr[i]}`, done: false });
+    while (stack.length > 0 && arr[i] < stack[stack.length - 1]) {
+      const popped = stack.pop();
+      steps.push({ array: [...arr], stack: [...stack], pointers: { ptr: i }, highlights: [i], codeLine: 2, log: `Pop ${popped} (${arr[i]} < ${popped})`, done: false });
+    }
+    stack.push(arr[i]);
+    steps.push({ array: [...arr], stack: [...stack], pointers: { ptr: i }, highlights: [i], codeLine: 3, log: `Push ${arr[i]} -> stack: [${stack}]`, done: false });
+  }
+  steps.push({ array: [...arr], stack: [...stack], pointers: {}, highlights: [], codeLine: 4, log: `Final stack: [${stack}]`, done: true });
+  return steps;
+}
+
+function bfsGridSteps(arr) {
+  const steps = [];
+  const n = arr.length;
+  const queue = [0];
+  const visited = new Array(n).fill(false);
+  visited[0] = true;
+  steps.push({ array: [...arr], stack: [arr[0]], visited: [...visited], pointers: { q: 0 }, highlights: [0], codeLine: 0, log: `Start BFS from index 0 = ${arr[0]}`, done: false });
+  while (queue.length > 0) {
+    const idx = queue.shift();
+    const left = 2 * idx + 1, right = 2 * idx + 2;
+    steps.push({ array: [...arr], stack: Array.from(queue, i => arr[i]), visited: [...visited], pointers: { q: idx }, highlights: [idx], codeLine: 1, log: `Visit index ${idx} = ${arr[idx]}`, done: false });
+    if (left < n && !visited[left]) { visited[left] = true; queue.push(left); steps.push({ array: [...arr], stack: Array.from(queue, i => arr[i]), visited: [...visited], pointers: {}, highlights: [left], codeLine: 2, log: `Enqueue left child index ${left} = ${arr[left]}`, done: false }); }
+    if (right < n && !visited[right]) { visited[right] = true; queue.push(right); steps.push({ array: [...arr], stack: Array.from(queue, i => arr[i]), visited: [...visited], pointers: {}, highlights: [right], codeLine: 2, log: `Enqueue right child index ${right} = ${arr[right]}`, done: false }); }
+  }
+  steps.push({ array: [...arr], stack: [], visited: [...visited], pointers: {}, highlights: [], codeLine: 3, log: `BFS complete`, done: true });
+  return steps;
+}
+
+function dfsGridSteps(arr) {
+  const steps = [];
+  const n = arr.length;
+  const stackArr = [0];
+  const visited = new Array(n).fill(false);
+  steps.push({ array: [...arr], stack: [arr[0]], visited: [...visited], pointers: {}, highlights: [], codeLine: 0, log: `Start DFS from index 0`, done: false });
+  while (stackArr.length > 0) {
+    const idx = stackArr.pop();
+    if (visited[idx]) continue;
+    visited[idx] = true;
+    const left = 2 * idx + 1, right = 2 * idx + 2;
+    steps.push({ array: [...arr], stack: Array.from(stackArr, i => arr[i]), visited: [...visited], pointers: { cur: idx }, highlights: [idx], codeLine: 1, log: `Visit index ${idx} = ${arr[idx]}`, done: false });
+    if (right < n && !visited[right]) { stackArr.push(right); steps.push({ array: [...arr], stack: Array.from(stackArr, i => arr[i]), visited: [...visited], pointers: {}, highlights: [right], codeLine: 2, log: `Push right child ${right} = ${arr[right]}`, done: false }); }
+    if (left < n && !visited[left]) { stackArr.push(left); steps.push({ array: [...arr], stack: Array.from(stackArr, i => arr[i]), visited: [...visited], pointers: {}, highlights: [left], codeLine: 2, log: `Push left child ${left} = ${arr[left]}`, done: false }); }
+  }
+  steps.push({ array: [...arr], stack: [], visited: [...visited], pointers: {}, highlights: [], codeLine: 3, log: `DFS complete`, done: true });
+  return steps;
+}
+
+function heapSteps(arr) {
+  const steps = [];
+  const a = [...arr];
+  steps.push({ array: [...a], stack: [], pointers: {}, highlights: [], codeLine: 0, log: `Build min-heap and extract min`, done: false });
+
+  function heapify(a, n, i) {
+    let smallest = i;
+    const L = 2 * i + 1, R = 2 * i + 2;
+    steps.push({ array: [...a], stack: [], pointers: { parent: i }, highlights: [i, L < n ? L : -1, R < n ? R : -1].filter(x => x >= 0), codeLine: 1, log: `Heapify at index ${i}`, done: false });
+    if (L < n && a[L] < a[smallest]) smallest = L;
+    if (R < n && a[R] < a[smallest]) smallest = R;
+    if (smallest !== i) {
+      [a[i], a[smallest]] = [a[smallest], a[i]];
+      steps.push({ array: [...a], stack: [], pointers: { parent: i, child: smallest }, highlights: [i, smallest], codeLine: 2, log: `Swap a[${i}] with a[${smallest}]`, done: false });
+      heapify(a, n, smallest);
+    }
+  }
+
+  for (let i = Math.floor(a.length / 2) - 1; i >= 0; i--) heapify(a, a.length, i);
+  steps.push({ array: [...a], stack: [], pointers: {}, highlights: [], codeLine: 3, log: `Heap built: [${a}]`, done: false });
+
+  const sorted = [];
+  for (let i = a.length - 1; i >= 0; i--) {
+    [a[0], a[i]] = [a[i], a[0]];
+    sorted.unshift(a[i]);
+    steps.push({ array: [...a.slice(0, i)], stack: [...sorted], pointers: {}, highlights: [i], codeLine: 4, log: `Extract min: ${a[i]}`, done: false });
+    heapify(a, i, 0);
+  }
+  steps.push({ array: [...a], stack: [...sorted], pointers: {}, highlights: [], codeLine: 5, log: `Sorted: [${sorted}]`, done: true });
+  return steps;
+}
+
 export const visualizations = {
   'linear-search': {
     title: 'Linear Search',
@@ -182,5 +268,65 @@ export const visualizations = {
     defaultInput: { arr: [2, 1, 5, 1, 3, 2, 6, 1], k: 3 },
     description: 'Sliding window maintains a running sum over a fixed-size window.',
     pointerMap: { start: { color: '#3b82f6', label: 'start' }, end: { color: '#ef4444', label: 'end' } },
+  },
+  'stack': {
+    title: 'Monotonic Stack',
+    code: [
+      'stack = []',
+      'for each num in arr:',
+      '  while stack and num < stack.top:',
+      '    stack.pop()',
+      '  stack.push(num)',
+      'return stack',
+    ],
+    generateSteps: stackSteps,
+    defaultInput: { arr: [4, 2, 5, 1, 3] },
+    description: 'Monotonic stack maintains a sorted stack by popping smaller elements.',
+    pointerMap: { ptr: { color: '#3b82f6', label: 'ptr' } },
+  },
+  'bfs': {
+    title: 'BFS Grid Traversal',
+    code: [
+      'queue = [(0, 0)], visited = set()',
+      'while queue:',
+      '  r, c = queue.pop(0)',
+      '  for dr, dc in directions:',
+      '    if in_bounds and not visited:',
+      '      visited.add((nr, nc))',
+      '      queue.append((nr, nc))',
+    ],
+    generateSteps: bfsGridSteps,
+    defaultInput: { arr: [1, 2, 3, 4, 5, 6, 7] },
+    description: 'BFS explores a tree level by level using a queue.',
+    pointerMap: { q: { color: '#3b82f6', label: 'q' } },
+  },
+  'dfs': {
+    title: 'DFS Tree Traversal',
+    code: [
+      'stack = [root], visited = set()',
+      'while stack:',
+      '  node = stack.pop()',
+      '  if visited: continue',
+      '  visited.add(node)',
+      '  push children right, then left',
+    ],
+    generateSteps: dfsGridSteps,
+    defaultInput: { arr: [1, 2, 3, 4, 5, 6, 7] },
+    description: 'DFS explores a tree depth-first using a stack.',
+    pointerMap: { cur: { color: '#f59e0b', label: 'cur' } },
+  },
+  'heap': {
+    title: 'Min Heap',
+    code: [
+      'for i in range(n//2-1, -1, -1):',
+      '  heapify(arr, n, i)',
+      'for i in range(n-1, 0, -1):',
+      '  swap arr[0], arr[i]',
+      '  heapify(arr, i, 0)',
+    ],
+    generateSteps: heapSteps,
+    defaultInput: { arr: [9, 4, 7, 1, 3, 8] },
+    description: 'Heap sort builds a min-heap then extracts elements in sorted order.',
+    pointerMap: { parent: { color: '#f59e0b', label: 'parent' }, child: { color: '#ef4444', label: 'child' } },
   },
 };
