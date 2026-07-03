@@ -10,6 +10,7 @@ const links = [
   { to: '/algorithms', label: 'Algorithms' },
   { to: '/system-design', label: 'System Design' },
   { to: '/review', label: 'Review' },
+  { to: '/playground', label: 'Visualizer' },
   { to: '/resources', label: 'Resources' },
 ];
 

@@ -833,6 +833,15 @@ textarea.form-input {
   font-family: 'SF Mono', 'Consolas', 'Menlo', monospace;
 }
 
+/* ── Algorithm Visualizer ── */
+
+.viz-array-container::-webkit-scrollbar { height: 4px; }
+.viz-array-container::-webkit-scrollbar-thumb { background: var(--hairline); border-radius: 4px; }
+
+@media (max-width: 768px) {
+  .viz-panels { grid-template-columns: 1fr !important; }
+}
+
 /* ── Mobile grid overrides ── */
 
 @media (max-width: 768px) {
