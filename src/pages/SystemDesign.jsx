@@ -9,25 +9,25 @@ const sectionLabels = { requirements: 'Requirements', api_design: 'API Design', 
 
 function TechStackTable({ techStack }) {
   return (
-    <div style={{ overflowX: 'auto', marginBottom: 16 }}>
-      <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '0.85rem', border: '1px solid var(--hairline)' }}>
+    <div className="sd-table-wrap">
+      <table className="sd-tech-table">
         <thead>
-          <tr style={{ background: 'var(--surface-soft)', borderBottom: '1px solid var(--hairline)' }}>
-            <th style={{ padding: '8px 10px', textAlign: 'left', borderRight: '1px solid var(--hairline)', color: 'var(--body)', fontWeight: 600 }}>Component</th>
-            <th style={{ padding: '8px 10px', textAlign: 'left', borderRight: '1px solid var(--hairline)', color: 'var(--body)', fontWeight: 600 }}>Tech</th>
-            <th style={{ padding: '8px 10px', textAlign: 'left', borderRight: '1px solid var(--hairline)', color: 'var(--body)', fontWeight: 600 }}>Why (by numbers)</th>
-            <th style={{ padding: '8px 10px', textAlign: 'left', borderRight: '1px solid var(--hairline)', color: 'var(--body)', fontWeight: 600 }}>Alternatives</th>
-            <th style={{ padding: '8px 10px', textAlign: 'left', color: 'var(--body)', fontWeight: 600 }}>Tradeoffs</th>
+          <tr>
+            <th>Component</th>
+            <th>Tech</th>
+            <th>Why (by numbers)</th>
+            <th>Alternatives</th>
+            <th>Tradeoffs</th>
           </tr>
         </thead>
         <tbody>
           {techStack.map((t, i) => (
-            <tr key={i} style={{ borderBottom: '1px solid var(--hairline-soft)' }}>
-              <td style={{ padding: '8px 10px', borderRight: '1px solid var(--hairline)', color: 'var(--ink)', fontWeight: 600, whiteSpace: 'nowrap' }}>{t.component}</td>
-              <td style={{ padding: '8px 10px', borderRight: '1px solid var(--hairline)' }}><span className="tag tag-ghost" style={{ fontSize: '0.78rem' }}>{t.tech}</span></td>
-              <td style={{ padding: '8px 10px', borderRight: '1px solid var(--hairline)', color: 'var(--body)', fontSize: '0.82rem', lineHeight: 1.5 }}>{t.why}</td>
-              <td style={{ padding: '8px 10px', borderRight: '1px solid var(--hairline)', color: 'var(--muted)', fontSize: '0.82rem' }}>{t.alternatives}</td>
-              <td style={{ padding: '8px 10px', color: 'var(--body)', fontSize: '0.82rem', lineHeight: 1.5 }}>{t.tradeoffs}</td>
+            <tr key={i}>
+              <td className="sd-tech-component">{t.component}</td>
+              <td><span className="tag tag-ghost" style={{ fontSize: '0.78rem' }}>{t.tech}</span></td>
+              <td className="sd-tech-detail">{t.why}</td>
+              <td className="sd-tech-detail" style={{ color: 'var(--muted)' }}>{t.alternatives}</td>
+              <td className="sd-tech-detail">{t.tradeoffs}</td>
             </tr>
           ))}
         </tbody>
@@ -42,16 +42,16 @@ function ProblemDetail({ problem, onBack, onPractice }) {
       <button className="btn" style={{ marginBottom: 14 }} onClick={onBack}>Back to list</button>
 
       <div className="card-white" style={{ padding: 20, marginBottom: 16 }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, alignItems: 'center', marginBottom: 8, flexWrap: 'wrap' }}>
+        <div className="sd-detail-header">
           <h2 style={{ margin: 0, fontSize: '1.25rem', color: 'var(--ink)', fontWeight: 600 }}>{problem.title}</h2>
-          <span className="tag" style={{ color: difficultyColors[problem.difficulty], border: `1px solid ${difficultyColors[problem.difficulty]}44`, background: `${difficultyColors[problem.difficulty]}16` }}>{problem.difficulty}</span>
+          <span className="tag sd-difficulty-tag" style={{ color: difficultyColors[problem.difficulty], border: `1px solid ${difficultyColors[problem.difficulty]}44`, background: `${difficultyColors[problem.difficulty]}16` }}>{problem.difficulty}</span>
         </div>
         <p style={{ color: 'var(--muted)', fontSize: '0.9rem', margin: 0 }}>{problem.usedBy}</p>
       </div>
 
       <div className="card-white" style={{ padding: 20, marginBottom: 14 }}>
         <h3 style={{ fontSize: '1rem', marginBottom: 10, color: 'var(--ink)', fontWeight: 600 }}>Requirements</h3>
-        <div style={{ fontSize: '0.9rem', lineHeight: 1.7, color: 'var(--body)', whiteSpace: 'pre-wrap' }}>{problem.requirements}</div>
+        <div className="sd-text-content">{problem.requirements}</div>
       </div>
 
       <div className="card-white" style={{ padding: 20, marginBottom: 14 }}>
@@ -73,12 +73,12 @@ function ProblemDetail({ problem, onBack, onPractice }) {
 
       <div className="card-white" style={{ padding: 20, marginBottom: 14 }}>
         <h3 style={{ fontSize: '1rem', marginBottom: 10, color: 'var(--ink)', fontWeight: 600 }}>Data Model</h3>
-        <div style={{ fontSize: '0.9rem', lineHeight: 1.7, color: 'var(--body)', whiteSpace: 'pre-wrap' }}>{problem.dataModel}</div>
+        <div className="sd-text-content">{problem.dataModel}</div>
       </div>
 
       <div className="card-white" style={{ padding: 20, marginBottom: 14 }}>
         <h3 style={{ fontSize: '1rem', marginBottom: 10, color: 'var(--ink)', fontWeight: 600 }}>Deep Dive</h3>
-        <div style={{ fontSize: '0.9rem', lineHeight: 1.7, color: 'var(--body)', whiteSpace: 'pre-wrap' }}>{problem.deepDive}</div>
+        <div className="sd-text-content">{problem.deepDive}</div>
       </div>
 
       <button className="btn btn-primary" style={{ width: '100%' }} onClick={() => onPractice(problem)}>
@@ -92,9 +92,9 @@ function ScoreCard({ result }) {
   if (!result) return null;
   return (
     <div style={{ marginTop: 16 }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 16, marginBottom: 16 }}>
+      <div className="sd-score-header">
         <h3 style={{ margin: 0, fontSize: '1.1rem', color: 'var(--ink)', fontWeight: 600 }}>Score</h3>
-        <div style={{ fontSize: '1.5rem', fontWeight: 700, color: result.overall >= 70 ? 'var(--success)' : result.overall >= 40 ? 'var(--warning)' : 'var(--error)' }}>
+        <div className="sd-score-val" style={{ color: result.overall >= 70 ? 'var(--success)' : result.overall >= 40 ? 'var(--warning)' : 'var(--error)' }}>
           {result.overall}%
         </div>
       </div>
@@ -102,14 +102,14 @@ function ScoreCard({ result }) {
         const s = result.sections[name];
         if (!s) return null;
         return (
-          <details key={name} className="card-white" style={{ padding: 16, marginBottom: 10, cursor: 'pointer' }} open>
+          <details key={name} className="card-white sd-score-section" open>
             <summary style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--ink)' }}>
               {sectionLabels[name]} - {s.score}% <span style={{ color: 'var(--muted)', fontWeight: 400 }}>({s.points})</span>
             </summary>
             {s.matched.length > 0 && (
               <div style={{ marginTop: 10, marginBottom: 8 }}>
                 <div style={{ fontSize: '0.8rem', color: 'var(--success)', fontWeight: 600, marginBottom: 4 }}>Matched</div>
-                <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+                <div className="sd-tag-list">
                   {s.matched.map(m => <span key={m} className="tag tag-success" style={{ fontSize: '0.75rem' }}>{m}</span>)}
                 </div>
               </div>
@@ -117,7 +117,7 @@ function ScoreCard({ result }) {
             {s.missing.length > 0 && (
               <div style={{ marginBottom: 8 }}>
                 <div style={{ fontSize: '0.8rem', color: 'var(--error)', fontWeight: 600, marginBottom: 4 }}>Missing</div>
-                <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+                <div className="sd-tag-list">
                   {s.missing.map(m => <span key={m} className="tag" style={{ fontSize: '0.75rem', color: 'var(--error)', border: '1px solid rgba(239,68,68,0.3)' }}>{m}</span>)}
                 </div>
               </div>
@@ -127,7 +127,7 @@ function ScoreCard({ result }) {
       })}
       <div className="card-white" style={{ padding: 16, marginTop: 12 }}>
         <h4 style={{ fontSize: '0.9rem', color: 'var(--ink)', fontWeight: 600, marginBottom: 8 }}>Model Answer</h4>
-        <div style={{ fontSize: '0.85rem', lineHeight: 1.6, color: 'var(--body)', whiteSpace: 'pre-wrap' }}>
+        <div className="sd-text-content" style={{ fontSize: '0.85rem' }}>
           {sectionNames.map(name => (
             result.modelAnswer && result.modelAnswer[name] ? (
               <div key={name} style={{ marginBottom: 10 }}>
@@ -186,15 +186,14 @@ function PracticeView({ problem, onBack, onGradeSaved }) {
       <button className="btn" style={{ marginBottom: 14 }} onClick={onBack}>Back to detail</button>
       <div className="card-white" style={{ padding: 20, marginBottom: 16 }}>
         <h2 style={{ margin: 0, fontSize: '1.15rem', color: 'var(--ink)', fontWeight: 600, marginBottom: 4 }}>Practice: {problem.title}</h2>
-        <p style={{ color: 'var(--muted)', fontSize: '0.9rem', margin: 0 }}>Write your design answer for each section. Be specific about technology choices, scale numbers, and tradeoffs.</p>
+        <p style={{ color: 'var(--muted)', fontSize: '0.9rem', margin: 0 }}>Write your design answer for each section.</p>
       </div>
 
       {sectionNames.map(name => (
-        <div key={name} className="card-white" style={{ padding: 20, marginBottom: 12 }}>
-          <label style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--ink)', display: 'block', marginBottom: 6 }}>{sectionLabels[name]}</label>
+        <div key={name} className="card-white sd-practice-section">
+          <label className="sd-practice-label">{sectionLabels[name]}</label>
           <textarea
-            className="form-input"
-            style={{ minHeight: 100, width: '100%', resize: 'vertical' }}
+            className="form-input sd-practice-input"
             placeholder={`Enter your ${sectionLabels[name].toLowerCase()} design...`}
             value={answers[name] || ''}
             onChange={e => setAnswer(name, e.target.value)}
@@ -252,19 +251,19 @@ export default function SystemDesign() {
           </div>
 
           {tab === 'problems' && (
-            <div style={{ display: 'grid', gap: 10 }}>
+            <div className="sd-problem-list">
               {sdDesignProblems.map(p => (
-                <div key={p.id} className="card-white" style={{ padding: 18, cursor: 'pointer', position: 'relative' }} onClick={() => showDetail(p)}>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, alignItems: 'flex-start' }}>
-                    <div style={{ flex: 1 }}>
-                      <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginBottom: 4 }}>
+                <div key={p.id} className="card-white sd-problem-card" onClick={() => showDetail(p)}>
+                  <div className="sd-problem-row">
+                    <div className="sd-problem-info">
+                      <div className="sd-problem-tags">
                         <h3 style={{ fontSize: '1rem', margin: 0, color: 'var(--ink)', fontWeight: 600 }}>{p.title}</h3>
-                        <span className="tag" style={{ fontSize: '0.7rem', color: difficultyColors[p.difficulty], border: `1px solid ${difficultyColors[p.difficulty]}44`, background: `${difficultyColors[p.difficulty]}12`, padding: '2px 6px' }}>{p.difficulty}</span>
+                        <span className="tag sd-difficulty-tag" style={{ fontSize: '0.7rem', color: difficultyColors[p.difficulty], border: `1px solid ${difficultyColors[p.difficulty]}44`, background: `${difficultyColors[p.difficulty]}12`, padding: '2px 6px' }}>{p.difficulty}</span>
                         {savedGrades[p.id] && <span className="tag tag-success" style={{ fontSize: '0.65rem', padding: '1px 6px' }}>{savedGrades[p.id].overall}%</span>}
                       </div>
                       <p style={{ color: 'var(--muted)', fontSize: '0.85rem', margin: 0 }}>{p.summary}</p>
                     </div>
-                    <span style={{ color: 'var(--muted)', fontSize: '0.8rem', whiteSpace: 'nowrap' }}>{p.usedBy}</span>
+                    <span className="sd-problem-used-by">{p.usedBy}</span>
                   </div>
                 </div>
               ))}
@@ -272,15 +271,15 @@ export default function SystemDesign() {
           )}
 
           {tab === 'fundamentals' && (
-            <div style={{ display: 'grid', gap: 10 }}>
+            <div className="sd-problem-list">
               {sdFundamentals.map(f => (
-                <details key={f.id} className="card-white" style={{ padding: 16, cursor: 'pointer' }}>
+                <details key={f.id} className="card-white sd-funda-card">
                   <summary style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--ink)', marginBottom: 4 }}>
                     {f.title}
                     <span style={{ color: 'var(--muted)', fontWeight: 400, fontSize: '0.8rem', marginLeft: 10 }}>{f.complexity}</span>
                   </summary>
                   <p style={{ color: 'var(--muted)', fontSize: '0.8rem', marginTop: 4 }}>Used by: {f.usedBy}</p>
-                  <div style={{ fontSize: '0.88rem', lineHeight: 1.7, color: 'var(--body)', marginTop: 8, whiteSpace: 'pre-wrap' }}>{f.content}</div>
+                  <div className="sd-text-content" style={{ fontSize: '0.88rem', marginTop: 8 }}>{f.content}</div>
                 </details>
               ))}
             </div>

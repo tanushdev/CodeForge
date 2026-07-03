@@ -932,6 +932,62 @@ textarea.form-input {
   .learn-meta { grid-template-columns: 1fr !important; }
 }
 
+/* ── System Design ── */
+
+.sd-problem-list { display: grid; gap: 10px; }
+
+.sd-problem-card { padding: 18px; cursor: pointer; position: relative; }
+
+.sd-problem-row { display: flex; justify-content: space-between; gap: 12px; align-items: flex-start; }
+
+.sd-problem-info { flex: 1; min-width: 0; }
+
+.sd-problem-tags { display: flex; gap: 8px; align-items: center; margin-bottom: 4px; flex-wrap: wrap; }
+
+.sd-problem-used-by { color: var(--muted); font-size: 0.8rem; white-space: nowrap; flex-shrink: 0; }
+
+.sd-detail-header { display: flex; justify-content: space-between; gap: 12px; align-items: center; margin-bottom: 8px; flex-wrap: wrap; }
+
+.sd-text-content { font-size: 0.9rem; line-height: 1.7; color: var(--body); white-space: pre-wrap; }
+
+.sd-table-wrap { overflow-x: auto; margin-bottom: 16px; -webkit-overflow-scrolling: touch; }
+
+.sd-tech-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; border: 1px solid var(--hairline); min-width: 600px; }
+
+.sd-tech-table th { padding: 8px 10px; text-align: left; border-right: 1px solid var(--hairline); color: var(--body); font-weight: 600; background: var(--surface-soft); border-bottom: 1px solid var(--hairline); }
+
+.sd-tech-table td { padding: 8px 10px; border-right: 1px solid var(--hairline); border-bottom: 1px solid var(--hairline-soft); color: var(--body); font-size: 0.82rem; line-height: 1.5; }
+
+.sd-tech-table th:last-child, .sd-tech-table td:last-child { border-right: 0; }
+
+.sd-tech-component { color: var(--ink); font-weight: 600; white-space: nowrap; }
+
+.sd-tech-detail { font-size: 0.82rem; line-height: 1.5; }
+
+.sd-score-header { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
+
+.sd-score-val { font-size: 1.5rem; font-weight: 700; }
+
+.sd-score-section { padding: 16px; margin-bottom: 10px; cursor: pointer; }
+
+.sd-tag-list { display: flex; gap: 6px; flex-wrap: wrap; }
+
+.sd-practice-section { padding: 20px; margin-bottom: 12px; }
+
+.sd-practice-label { font-size: 0.85rem; font-weight: 600; color: var(--ink); display: block; margin-bottom: 6px; }
+
+.sd-practice-input { min-height: 100px; width: 100%; resize: vertical; box-sizing: border-box; }
+
+.sd-funda-card { padding: 16px; cursor: pointer; }
+
+@media (max-width: 640px) {
+  .sd-problem-row { flex-direction: column; }
+  .sd-problem-used-by { white-space: normal; font-size: 0.75rem; }
+  .sd-tech-table { font-size: 0.75rem; min-width: 500px; }
+  .sd-tech-table th, .sd-tech-table td { padding: 6px; }
+  .sd-practice-input { min-height: 80px; }
+}
+
 /* ── Labs ── */
 
 .lab-steps-grid {
