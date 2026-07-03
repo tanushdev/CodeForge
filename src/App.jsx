@@ -6,13 +6,11 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
 import Roadmap from './pages/Roadmap';
-import Lessons from './pages/Lessons';
 import Labs from './pages/Labs';
 import Algorithms from './pages/Algorithms';
 import ResourcesPage from './pages/Resources';
 import Review from './pages/Review';
 import SystemDesign from './pages/SystemDesign';
-import Playground from './pages/Playground';
 import Learn from './pages/Learn';
 
 function ProtectedRoute({ children }) {
@@ -53,13 +51,11 @@ export default function App() {
             <Route path="/signup" element={<PublicRoute><Signup /></PublicRoute>} />
             <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
             <Route path="/roadmap" element={<ProtectedRoute><Roadmap /></ProtectedRoute>} />
-            <Route path="/lessons" element={<ProtectedRoute><Lessons /></ProtectedRoute>} />
             <Route path="/labs" element={<ProtectedRoute><Labs /></ProtectedRoute>} />
             <Route path="/algorithms" element={<ProtectedRoute><Algorithms /></ProtectedRoute>} />
             <Route path="/resources" element={<ProtectedRoute><ResourcesPage /></ProtectedRoute>} />
             <Route path="/review" element={<ProtectedRoute><Review /></ProtectedRoute>} />
             <Route path="/system-design" element={<ProtectedRoute><SystemDesign /></ProtectedRoute>} />
-            <Route path="/playground" element={<ProtectedRoute><Playground /></ProtectedRoute>} />
             <Route path="/learn" element={<ProtectedRoute><Learn /></ProtectedRoute>} />
             <Route path="*" element={<Navigate to="/welcome" replace />} />
           </Routes>
