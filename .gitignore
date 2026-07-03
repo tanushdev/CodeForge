@@ -1,7 +1,11 @@
 node_modules/
 .env
 dist/
-*.pdf
 .vscode/
 .idea/
 *.log
+/Grokking-the-system-design-interviewpdf-5-pdf-free (1).pdf
+/System Design Interview by Alex Xu.pdf
+/styles.css
+/app.js
+/lessons_data.js
