@@ -6,12 +6,10 @@ const links = [
   { to: '/dashboard', label: 'Dashboard' },
   { to: '/roadmap', label: 'Roadmap' },
   { to: '/learn', label: 'Learn' },
-  { to: '/lessons', label: 'Lessons' },
   { to: '/labs', label: 'Labs' },
   { to: '/algorithms', label: 'Algorithms' },
   { to: '/system-design', label: 'System Design' },
   { to: '/review', label: 'Review' },
-  { to: '/playground', label: 'Visualizer' },
   { to: '/resources', label: 'Resources' },
 ];
 
