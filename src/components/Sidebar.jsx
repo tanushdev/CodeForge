@@ -3,22 +3,22 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 const links = [
-  { to: '/dashboard', label: 'Dashboard' },
-  { to: '/roadmap', label: 'Roadmap' },
-  { to: '/learn', label: 'Learn' },
-  { to: '/labs', label: 'Labs' },
-  { to: '/algorithms', label: 'Algorithms' },
-  { to: '/system-design', label: 'System Design' },
-  { to: '/review', label: 'Review' },
-  { to: '/resources', label: 'Resources' },
+  { to: '/dashboard', label: 'Dashboard', icon: 'D' },
+  { to: '/roadmap', label: 'Roadmap', icon: 'R' },
+  { to: '/learn', label: 'Learn', icon: 'L' },
+  { to: '/labs', label: 'Labs', icon: 'B' },
+  { to: '/algorithms', label: 'Algorithms', icon: 'A' },
+  { to: '/system-design', label: 'System Design', icon: 'S' },
+  { to: '/review', label: 'Review', icon: 'V' },
+  { to: '/resources', label: 'Resources', icon: 'F' },
 ];
 
 const bottomLinks = [
-  { to: '/dashboard', label: 'Home' },
-  { to: '/learn', label: 'Learn' },
-  { to: '/roadmap', label: 'Roadmap' },
-  { to: '/labs', label: 'Labs' },
-  { to: '/algorithms', label: 'Code' },
+  { to: '/dashboard', label: 'Home', icon: 'H' },
+  { to: '/learn', label: 'Learn', icon: 'L' },
+  { to: '/roadmap', label: 'Roadmap', icon: 'R' },
+  { to: '/labs', label: 'Labs', icon: 'B' },
+  { to: '/algorithms', label: 'Code', icon: 'C' },
 ];
 
 export default function Sidebar() {
@@ -58,6 +58,7 @@ export default function Sidebar() {
               className={({ isActive }) => `sidebar-link${isActive ? ' active' : ''}`}
               onClick={close}
             >
+              <span className="sidebar-link-icon">{link.icon}</span>
               {link.label}
             </NavLink>
           ))}
@@ -83,9 +84,14 @@ export default function Sidebar() {
             end={link.to === '/'}
             className={({ isActive }) => `bottom-link${isActive ? ' active' : ''}`}
           >
-            {link.label}
+            <span className="bottom-link-icon">{link.icon}</span>
+            <span className="bottom-link-label">{link.label}</span>
           </NavLink>
         ))}
+        <button className="bottom-link bottom-menu-btn" onClick={() => setOpen(true)} aria-label="Open menu">
+          <span className="bottom-link-icon">M</span>
+          <span className="bottom-link-label">Menu</span>
+        </button>
       </nav>
     </>
   );

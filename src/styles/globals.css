@@ -932,6 +932,19 @@ textarea.form-input {
   .learn-meta { grid-template-columns: 1fr !important; }
 }
 
+/* ── Labs ── */
+
+.lab-steps-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 640px) {
+  .lab-steps-grid { grid-template-columns: 1fr; }
+}
+
 /* ── Algorithm Visualizer ── */
 
 .viz-array-container::-webkit-scrollbar { height: 4px; }
@@ -1019,16 +1032,19 @@ textarea.form-input {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2px;
-  min-width: 48px;
+  gap: 1px;
+  min-width: 44px;
   height: 48px;
-  padding: 4px 10px;
+  padding: 2px 8px;
   border-radius: var(--rounded-md);
   color: var(--muted);
-  font-size: 0.68rem;
+  font-size: 0.62rem;
   font-weight: 500;
   text-decoration: none;
   transition: color 0.15s;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
 }
 
 .bottom-link.active {
@@ -1037,6 +1053,18 @@ textarea.form-input {
 }
 
 .bottom-link:hover { color: var(--ink); }
+
+.bottom-link-icon {
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.bottom-link-label {
+  line-height: 1;
+}
+
+.bottom-menu-btn { color: var(--muted); }
 
 /* ── Responsive ── */
 
