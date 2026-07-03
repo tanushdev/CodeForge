@@ -57,6 +57,7 @@ export default function App() {
             <Route path="/review" element={<ProtectedRoute><Review /></ProtectedRoute>} />
             <Route path="/system-design" element={<ProtectedRoute><SystemDesign /></ProtectedRoute>} />
             <Route path="/learn" element={<ProtectedRoute><Learn /></ProtectedRoute>} />
+            <Route path="/learn/:lessonId" element={<ProtectedRoute><Learn /></ProtectedRoute>} />
             <Route path="*" element={<Navigate to="/welcome" replace />} />
           </Routes>
         </AppLayout>

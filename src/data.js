@@ -1738,25 +1738,25 @@ export const roadmap = [
   {
     level: 'Phase 2', title: 'Arrays, strings, hashing',
     topics: [
-      { name: 'Arrays and prefix sums', priority: 'important', detail: 'Subarray sums, Kadane, in-place transforms.', link: '/learn?level=1', leetcode: 'https://leetcode.com/tag/array/' },
-      { name: 'Strings', priority: 'important', detail: 'Anagrams, palindromes, parsing, matching.', link: '/learn?level=17', leetcode: 'https://leetcode.com/tag/string/' },
-      { name: 'Hash maps and sets', priority: 'important', detail: 'Frequency, membership, two-sum family.', link: '/learn?level=5', leetcode: 'https://leetcode.com/tag/hash-table/' },
-      { name: 'String algorithms (advanced)', priority: 'advanced', detail: 'KMP, Rabin-Karp, Z-function, rolling hash', link: '/learn?level=17', leetcode: 'https://leetcode.com/tag/string-matching/' },
+      { name: 'Arrays and prefix sums', priority: 'important', detail: 'Subarray sums, Kadane, in-place transforms.', link: '/learn/1', leetcode: 'https://leetcode.com/tag/array/' },
+      { name: 'Strings', priority: 'important', detail: 'Anagrams, palindromes, parsing, matching.', link: '/learn/17', leetcode: 'https://leetcode.com/tag/string/' },
+      { name: 'Hash maps and sets', priority: 'important', detail: 'Frequency, membership, two-sum family.', link: '/learn/5', leetcode: 'https://leetcode.com/tag/hash-table/' },
+      { name: 'String algorithms (advanced)', priority: 'advanced', detail: 'KMP, Rabin-Karp, Z-function, rolling hash', link: '/learn/17', leetcode: 'https://leetcode.com/tag/string-matching/' },
     ],
   },
   {
     level: 'Phase 3', title: 'Pointers, windows, binary search',
     topics: [
-      { name: 'Two pointers', priority: 'important', detail: 'Opposite ends, fast/slow, sorted pair logic.', link: '/learn?level=4', leetcode: 'https://leetcode.com/tag/two-pointers/' },
-      { name: 'Sliding window', priority: 'important', detail: 'Fixed and variable window, invariant restoration.', link: '/learn?level=5', leetcode: 'https://leetcode.com/tag/sliding-window/' },
-      { name: 'Binary search', priority: 'important', detail: 'Index search, answer search, rotated arrays.', link: '/learn?level=3', leetcode: 'https://leetcode.com/tag/binary-search/' },
+      { name: 'Two pointers', priority: 'important', detail: 'Opposite ends, fast/slow, sorted pair logic.', link: '/learn/4', leetcode: 'https://leetcode.com/tag/two-pointers/' },
+      { name: 'Sliding window', priority: 'important', detail: 'Fixed and variable window, invariant restoration.', link: '/learn/5', leetcode: 'https://leetcode.com/tag/sliding-window/' },
+      { name: 'Binary search', priority: 'important', detail: 'Index search, answer search, rotated arrays.', link: '/learn/3', leetcode: 'https://leetcode.com/tag/binary-search/' },
     ],
   },
   {
     level: 'Phase 4', title: 'Linked lists, stacks, queues',
     topics: [
       { name: 'Linked lists', priority: 'important', detail: 'Reverse, merge, cycle, dummy nodes.', link: '/algorithms', leetcode: 'https://leetcode.com/tag/linked-list/' },
-      { name: 'Stacks', priority: 'important', detail: 'Monotonic stack, parentheses, histogram.', link: '/learn?level=6', leetcode: 'https://leetcode.com/tag/stack/' },
+      { name: 'Stacks', priority: 'important', detail: 'Monotonic stack, parentheses, histogram.', link: '/learn/6', leetcode: 'https://leetcode.com/tag/stack/' },
       { name: 'Queues and deques', priority: 'core', detail: 'BFS queues, sliding maximum, deque.', link: '/algorithms', leetcode: 'https://leetcode.com/tag/queue/' },
     ],
   },
@@ -1765,19 +1765,19 @@ export const roadmap = [
     topics: [
       { name: 'Binary trees', priority: 'important', detail: 'DFS/BFS traversals, diameter, LCA.', link: '/labs', leetcode: 'https://leetcode.com/tag/tree/' },
       { name: 'BST', priority: 'important', detail: 'Validation, search, kth, inorder.', link: '/labs', leetcode: 'https://leetcode.com/tag/binary-search-tree/' },
-      { name: 'Heaps', priority: 'important', detail: 'Top K, streaming, merge K sorted.', link: '/learn?level=9', leetcode: 'https://leetcode.com/tag/heap-priority-queue/' },
-      { name: 'Trie', priority: 'advanced', detail: 'Prefix tree, search suggestions.', link: '/learn?level=11', leetcode: 'https://leetcode.com/tag/trie/' },
-      { name: 'Bit manipulation', priority: 'advanced', detail: 'Bitmask DP, subset enumeration, counting bits tricks', link: '/learn?level=18', leetcode: 'https://leetcode.com/tag/bit-manipulation/' },
+      { name: 'Heaps', priority: 'important', detail: 'Top K, streaming, merge K sorted.', link: '/learn/9', leetcode: 'https://leetcode.com/tag/heap-priority-queue/' },
+      { name: 'Trie', priority: 'advanced', detail: 'Prefix tree, search suggestions.', link: '/learn/11', leetcode: 'https://leetcode.com/tag/trie/' },
+      { name: 'Bit manipulation', priority: 'advanced', detail: 'Bitmask DP, subset enumeration, counting bits tricks', link: '/learn/18', leetcode: 'https://leetcode.com/tag/bit-manipulation/' },
     ],
   },
   {
     level: 'Phase 6', title: 'Graphs and DSU',
     topics: [
-      { name: 'BFS and DFS graphs', priority: 'important', detail: 'Components, islands, shortest paths.', link: '/learn?level=7', leetcode: 'https://leetcode.com/tag/graph/' },
+      { name: 'BFS and DFS graphs', priority: 'important', detail: 'Components, islands, shortest paths.', link: '/learn/7', leetcode: 'https://leetcode.com/tag/graph/' },
       { name: 'Topological sort', priority: 'important', detail: 'DAG ordering, prerequisites, cycle detection.', link: '/algorithms', leetcode: 'https://leetcode.com/tag/topological-sort/' },
-      { name: 'Shortest paths', priority: 'advanced', detail: 'Dijkstra, Bellman-Ford, MST.', link: '/learn?level=14', leetcode: 'https://leetcode.com/tag/shortest-path/' },
-      { name: 'Disjoint set union', priority: 'advanced', detail: 'Union-find, path compression.', link: '/learn?level=10', leetcode: 'https://leetcode.com/tag/union-find/' },
-      { name: 'Advanced graph algorithms', priority: 'advanced', detail: 'Bellman-Ford, Floyd-Warshall, SCC, articulation points, network flow', link: '/learn?level=15', leetcode: 'https://leetcode.com/tag/graph/' },
+      { name: 'Shortest paths', priority: 'advanced', detail: 'Dijkstra, Bellman-Ford, MST.', link: '/learn/14', leetcode: 'https://leetcode.com/tag/shortest-path/' },
+      { name: 'Disjoint set union', priority: 'advanced', detail: 'Union-find, path compression.', link: '/learn/10', leetcode: 'https://leetcode.com/tag/union-find/' },
+      { name: 'Advanced graph algorithms', priority: 'advanced', detail: 'Bellman-Ford, Floyd-Warshall, SCC, articulation points, network flow', link: '/learn/15', leetcode: 'https://leetcode.com/tag/graph/' },
       { name: 'Bipartite graph / coloring', priority: 'core', detail: 'Two-coloring, odd cycle detection, matching', link: '/algorithms', leetcode: 'https://leetcode.com/tag/graph/' },
     ],
   },
@@ -1785,9 +1785,9 @@ export const roadmap = [
     level: 'Phase 7', title: 'Greedy, backtracking, DP',
     topics: [
       { name: 'Greedy', priority: 'important', detail: 'Local choice proofs, intervals, scheduling.', link: '/algorithms', leetcode: 'https://leetcode.com/tag/greedy/' },
-      { name: 'Backtracking', priority: 'important', detail: 'Subsets, permutations, constraint search.', link: '/learn?level=12', leetcode: 'https://leetcode.com/tag/backtracking/' },
-      { name: '1D and 2D DP', priority: 'important', detail: 'Memoization, tabulation, state transitions.', link: '/learn?level=13', leetcode: 'https://leetcode.com/tag/dynamic-programming/' },
-      { name: 'Advanced DP patterns', priority: 'advanced', detail: 'DP on trees, digit DP, DP + binary search, DP with bitmask', link: '/learn?level=19', leetcode: 'https://leetcode.com/tag/dynamic-programming/' },
+      { name: 'Backtracking', priority: 'important', detail: 'Subsets, permutations, constraint search.', link: '/learn/12', leetcode: 'https://leetcode.com/tag/backtracking/' },
+      { name: '1D and 2D DP', priority: 'important', detail: 'Memoization, tabulation, state transitions.', link: '/learn/13', leetcode: 'https://leetcode.com/tag/dynamic-programming/' },
+      { name: 'Advanced DP patterns', priority: 'advanced', detail: 'DP on trees, digit DP, DP + binary search, DP with bitmask', link: '/learn/19', leetcode: 'https://leetcode.com/tag/dynamic-programming/' },
     ],
   },
   {
@@ -1802,7 +1802,7 @@ export const roadmap = [
     topics: [
       { name: 'Math / combinatorics', priority: 'advanced', detail: 'Modular exponentiation, modular inverse, Sieve, totient, matrix exponentiation', link: '/algorithms', leetcode: 'https://leetcode.com/tag/math/' },
       { name: 'Randomized algorithms', priority: 'advanced', detail: 'Reservoir sampling, Fisher-Yates shuffle, random pick with weight', link: '/algorithms', leetcode: 'https://leetcode.com/tag/randomized/' },
-      { name: 'Pattern-combination problems', priority: 'important', detail: 'Two techniques fused: sliding window + heap, graph + DSU, DFS + memoization + bitmask', link: '/learn?level=20' },
+      { name: 'Pattern-combination problems', priority: 'important', detail: 'Two techniques fused: sliding window + heap, graph + DSU, DFS + memoization + bitmask', link: '/learn/20' },
     ],
   },
   {
