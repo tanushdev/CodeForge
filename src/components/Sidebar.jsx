@@ -13,6 +13,14 @@ const links = [
   { to: '/resources', label: 'Resources' },
 ];
 
+const bottomLinks = [
+  { to: '/dashboard', label: 'Home' },
+  { to: '/learn', label: 'Learn' },
+  { to: '/roadmap', label: 'Roadmap' },
+  { to: '/labs', label: 'Labs' },
+  { to: '/algorithms', label: 'Code' },
+];
+
 export default function Sidebar() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
@@ -66,6 +74,19 @@ export default function Sidebar() {
           </div>
         )}
       </aside>
+
+      <nav className="bottom-bar">
+        {bottomLinks.map((link) => (
+          <NavLink
+            key={link.to}
+            to={link.to}
+            end={link.to === '/'}
+            className={({ isActive }) => `bottom-link${isActive ? ' active' : ''}`}
+          >
+            {link.label}
+          </NavLink>
+        ))}
+      </nav>
     </>
   );
 }

@@ -996,6 +996,48 @@ textarea.form-input {
   background: rgba(0,0,0,0.3);
 }
 
+/* ── Bottom tab bar (mobile) ── */
+
+.bottom-bar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 55;
+  height: 64px;
+  background: var(--canvas);
+  border-top: 1px solid var(--hairline);
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 4px;
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+
+.bottom-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  min-width: 48px;
+  height: 48px;
+  padding: 4px 10px;
+  border-radius: var(--rounded-md);
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.bottom-link.active {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.bottom-link:hover { color: var(--ink); }
+
 /* ── Responsive ── */
 
 @media (max-width: 1024px) {
@@ -1020,6 +1062,8 @@ textarea.form-input {
   .page { padding: 20px 16px 32px; padding-top: 70px; }
   .sidebar-toggle { display: flex; }
   .sidebar-overlay { display: block; }
+  .bottom-bar { display: flex; }
+  .main-area { padding-bottom: 80px; }
   .sidebar {
     position: fixed;
     top: 0;
