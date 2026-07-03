@@ -107,7 +107,7 @@ export default function Lessons() {
         <p>Complete each level to unlock the next. Master theory, code, dry runs, and interview scripts.</p>
       </div>
 
-      <div className="card-white" style={{ display: 'grid', gridTemplateColumns: '280px 1fr', gap: 18, padding: 18 }}>
+      <div className="card-white lessons-grid" style={{ display: 'grid', gridTemplateColumns: '280px 1fr', gap: 18, padding: 18 }}>
         {/* Level sidebar */}
         <div style={{ minWidth: 0 }}>
           <h3 style={{ marginBottom: 14, fontSize: '1rem', color: 'var(--ink)', fontWeight: 600 }}>Level path</h3>
@@ -159,7 +159,7 @@ export default function Lessons() {
               </div>
 
               {/* Meta */}
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: 10, marginBottom: 16 }}>
+              <div className="lessons-meta" style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: 10, marginBottom: 16 }}>
                 <div style={{ padding: '10px 12px', borderRadius: 8, border: '1px solid var(--hairline)', background: 'var(--surface-soft)' }}>
                   <span style={{ color: 'var(--muted)', fontSize: '0.82rem' }}>Use: {lesson.use}</span>
                 </div>

@@ -40,7 +40,7 @@ function LabViewer({ lab }) {
       </div>
 
       {/* Step visualization */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14, marginBottom: 16 }}>
+      <div className="lab-steps-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 14, marginBottom: 16 }}>
         <div style={{ padding: 14, borderRadius: 8, border: '1px solid var(--hairline)', background: 'var(--surface-soft)' }}>
           <div style={{ fontSize: '0.72rem', color: 'var(--muted)', fontWeight: 600, textTransform: 'uppercase', marginBottom: 8 }}>Step {step + 1}</div>
           <div style={{ display: 'flex', alignItems: 'flex-start', gap: 10 }}>

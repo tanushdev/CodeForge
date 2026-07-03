@@ -121,7 +121,7 @@ export default function Review() {
 
           <div style={{ display: 'grid', gap: 12 }}>
             {dueItems.map((item) => (
-              <div key={item.key} className="card-white" style={{
+              <div key={item.key} className="card-white review-item" style={{
                 display: 'grid', gridTemplateColumns: '1fr auto auto', gap: 16, alignItems: 'center', padding: '16px 18px',
               }}>
                 <div>

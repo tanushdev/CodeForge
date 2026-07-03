@@ -833,6 +833,16 @@ textarea.form-input {
   font-family: 'SF Mono', 'Consolas', 'Menlo', monospace;
 }
 
+/* ── Mobile grid overrides ── */
+
+@media (max-width: 768px) {
+  .lessons-grid { grid-template-columns: 1fr !important; }
+  .lessons-meta { grid-template-columns: 1fr !important; }
+  .lab-steps-grid { grid-template-columns: 1fr !important; }
+  .review-item { grid-template-columns: 1fr !important; gap: 12px !important; }
+  .review-item .btn { width: 100%; }
+}
+
 /* ── Sidebar toggle (hamburger) ── */
 
 .sidebar-toggle {
@@ -899,7 +909,7 @@ textarea.form-input {
   .display-xl { font-size: 36px; letter-spacing: -0.75px; }
   .display-lg { font-size: 28px; letter-spacing: -0.5px; }
   .display-md { font-size: 24px; }
-  .page { padding: 20px 16px 32px; }
+  .page { padding: 20px 16px 32px; padding-top: 70px; }
   .sidebar-toggle { display: flex; }
   .sidebar-overlay { display: block; }
   .sidebar {
@@ -907,7 +917,7 @@ textarea.form-input {
     top: 0;
     left: 0;
     bottom: 0;
-    width: 260px;
+    width: 280px;
     z-index: 50;
     transform: translateX(-100%);
     transition: transform 0.25s ease;
@@ -921,7 +931,6 @@ textarea.form-input {
 }
 
 @media (max-width: 640px) {
-  .sidebar { width: 100%; }
   .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
   .stat-card { padding: 14px; }
@@ -940,5 +949,39 @@ textarea.form-input {
   .topic-row strong { font-size: 0.85rem; }
   .sidebar-section-label { display: none; }
   .card-white { border-radius: var(--rounded-md); }
-  .stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .auth-card { padding: 24px 16px; }
+  .auth-card h1 { font-size: 1.3rem; }
+  .btn { min-height: 44px; padding: 0 16px; font-size: 15px; }
+  .sidebar-nav { padding: 8px; gap: 4px; }
+  .sidebar-link { padding: 12px 14px; font-size: 0.95rem; min-height: 44px; }
+  .sidebar-logout { min-height: 36px; padding: 8px 14px; }
+}
+
+@media (max-width: 480px) {
+  .page { padding: 16px 12px 24px; padding-top: 70px; }
+  .page-header { margin-bottom: 16px; }
+  .page-header h1 { font-size: clamp(1rem, 5vw, 1.3rem); }
+  .page-header p { font-size: 0.85rem; }
+  .display-xl { font-size: 24px; letter-spacing: -0.3px; }
+  .display-lg { font-size: 20px; }
+  .display-md { font-size: 18px; }
+  .display-sm { font-size: 17px; }
+  .stats-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .stat-card { padding: 12px; }
+  .stat-value { font-size: 1.2rem; }
+  .stat-label { font-size: 0.75rem; }
+  .card-white { border-radius: 8px; }
+  .topic-row { padding: 8px 12px !important; gap: 6px !important; }
+  .topic-row strong { font-size: 0.8rem; }
+  .tag { font-size: 0.7rem; padding: 3px 8px; }
+  .btn { min-height: 40px; padding: 0 12px; font-size: 13px; }
+  .sidebar { width: 100%; }
+  .sidebar-link { padding: 14px 16px; font-size: 1rem; min-height: 48px; }
+  .auth-card { padding: 20px 14px; }
+  .form-input { height: 44px; }
+  .code-block { font-size: 0.72rem; padding: 10px; }
+  .timer-display { font-size: 1.5rem; }
+  .stats-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .nav-pill-group .pill-item { padding: 8px 12px; font-size: 0.78rem; }
+  .page-header .eyebrow { font-size: 0.68rem; }
 }
