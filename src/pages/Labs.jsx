@@ -7,7 +7,7 @@ function LabViewer({ lab }) {
 
   return (
     <div className="card-white" style={{ padding: 20, overflow: 'hidden' }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, marginBottom: 14 }}>
+      <div className="lab-card-header">
         <div>
           <h3 style={{ fontSize: '1.05rem', marginBottom: 4, color: 'var(--ink)', fontWeight: 600 }}>{lab.title}</h3>
           <span className="tag tag-success">{lab.pattern}</span>
@@ -15,19 +15,16 @@ function LabViewer({ lab }) {
         <span style={{ color: 'var(--primary)', fontWeight: 700, fontSize: '0.85rem', whiteSpace: 'nowrap' }}>{lab.complexity}</span>
       </div>
 
-      {/* Theory / explanation */}
       <div style={{ padding: 14, borderRadius: 8, border: '1px solid var(--hairline)', marginBottom: 12, background: 'var(--surface-soft)' }}>
         <div style={{ fontSize: '0.72rem', color: 'var(--muted)', fontWeight: 600, textTransform: 'uppercase', marginBottom: 6 }}>How it works</div>
         <p style={{ fontSize: '0.9rem', lineHeight: 1.55, margin: 0, color: 'var(--body)' }}>{lab.theory}</p>
       </div>
 
-      {/* Formula */}
       <div style={{ padding: '10px 14px', borderRadius: 8, border: '1px solid var(--hairline)', marginBottom: 12, background: 'var(--surface-soft)' }}>
         <div style={{ fontSize: '0.72rem', color: 'var(--primary)', fontWeight: 600, textTransform: 'uppercase', marginBottom: 4 }}>Core formula</div>
         <p style={{ color: 'var(--ink)', fontSize: '0.9rem', margin: 0, fontFamily: 'monospace', lineHeight: 1.5, whiteSpace: 'pre-wrap' }}>{lab.formula}</p>
       </div>
 
-      {/* Intuition (one-liner) */}
       {lab.intuition && (
         <div style={{ padding: '10px 14px', borderRadius: 8, border: '1px solid var(--hairline)', marginBottom: 12, background: 'var(--surface-soft)' }}>
           <div style={{ fontSize: '0.72rem', color: 'var(--muted)', fontWeight: 600, textTransform: 'uppercase', marginBottom: 4 }}>Why this works</div>
@@ -39,7 +36,6 @@ function LabViewer({ lab }) {
         {lab.input}
       </div>
 
-      {/* Step visualization */}
       <div className="lab-steps-grid">
         <div style={{ padding: 14, borderRadius: 8, border: '1px solid var(--hairline)', background: 'var(--surface-soft)' }}>
           <div style={{ fontSize: '0.72rem', color: 'var(--muted)', fontWeight: 600, textTransform: 'uppercase', marginBottom: 8 }}>Step {step + 1}</div>
@@ -50,7 +46,7 @@ function LabViewer({ lab }) {
             }}>
               {step + 1}
             </div>
-            <div style={{ flex: 1 }}>
+            <div style={{ flex: 1, minWidth: 0 }}>
               <p style={{ fontSize: '0.92rem', lineHeight: 1.5, margin: 0, color: 'var(--body)' }}>{current?.desc}</p>
               {current?.formula && (
                 <div style={{
@@ -73,19 +69,13 @@ function LabViewer({ lab }) {
         </div>
       </div>
 
-      {/* Step progress bar */}
-      <div style={{ display: 'flex', gap: 6, marginBottom: 14, alignItems: 'center' }}>
+      <div className="lab-step-dots">
         {lab.steps.map((_, i) => (
           <button key={i} onClick={() => setStep(i)}
-            style={{
-              flex: 1, height: 6, border: 0, borderRadius: 999, cursor: 'pointer',
-              background: i === step ? 'var(--primary)' : i < step ? 'var(--success)' : 'var(--hairline)',
-              transition: 'background 0.2s',
-            }} />
+            className={`lab-step-dot${i === step ? ' active' : ''}${i < step ? ' done' : ''}`} />
         ))}
       </div>
 
-      {/* Intuition bottom */}
       {lab.intuitionBottom && (
         <div style={{ padding: '12px 14px', borderRadius: 8, border: '1px solid rgba(239,68,68,0.3)', marginBottom: 14, background: 'rgba(239,68,68,0.04)' }}>
           <div style={{ fontSize: '0.72rem', color: 'var(--error)', fontWeight: 600, textTransform: 'uppercase', marginBottom: 4 }}>Key takeaway</div>
@@ -93,8 +83,7 @@ function LabViewer({ lab }) {
         </div>
       )}
 
-      {/* Navigation */}
-      <div style={{ display: 'flex', gap: 10, justifyContent: 'center' }}>
+      <div className="lab-nav">
         <button className="btn" onClick={() => setStep(Math.max(0, step - 1))} disabled={step === 0}>
           Previous
         </button>
@@ -117,7 +106,7 @@ export default function Labs() {
       <div className="page-header">
         <p className="eyebrow">Solved area</p>
         <h1>Numerical dry runs</h1>
-        <p>Worked examples with step-by-step state visualization. Follow the input, watch the state change, then solve a similar problem.</p>
+        <p>Worked examples with step-by-step state visualization.</p>
       </div>
 
       <div className="grid-2">
@@ -127,9 +116,9 @@ export default function Labs() {
               <LabViewer lab={lab} />
             ) : (
               <div className="card-white" style={{ padding: 18, cursor: 'pointer' }} onClick={() => setOpen(i)}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', gap: 12, marginBottom: 10 }}>
+                <div className="lab-preview-header">
                   <h3 style={{ fontSize: '1rem', margin: 0, color: 'var(--ink)', fontWeight: 600 }}>{lab.title}</h3>
-                  <span className="tag tag-success" style={{ whiteSpace: 'nowrap' }}>{lab.pattern}</span>
+                  <span className="tag tag-success" style={{ whiteSpace: 'nowrap', flexShrink: 0 }}>{lab.pattern}</span>
                 </div>
                 {lab.intuition && (
                   <p style={{ color: 'var(--body)', fontSize: '0.85rem', lineHeight: 1.5, marginBottom: 8, fontStyle: 'italic' }}>
